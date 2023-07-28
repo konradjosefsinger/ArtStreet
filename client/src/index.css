@@ -1,0 +1,6 @@
+* {
+  box-sizing: border-box;
+  --main-bg-color: rgb( 224, 135, 71 );
+
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}

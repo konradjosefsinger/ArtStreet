@@ -1,4 +1,4 @@
-import Map from '../components/Map.js'
+import Map from '../components/Map/Map.js'
 import './home.css'
 
 function Home() {

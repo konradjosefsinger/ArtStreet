@@ -1,0 +1,16 @@
+.navbar {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  height: 7vh;
+  width: 100vw;
+  background: rgb(60, 60, 60);
+  padding: 0 7.5vh;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.header {
+  color: var(--main-bg-color);
+}

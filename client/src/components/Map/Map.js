@@ -17,7 +17,7 @@ function Map() {
   }
 
   const customIcon = new Icon ({
-    iconUrl: require ('../assets/markers/1f340.png'),
+    iconUrl: require ('../../assets/markers/1f340.png'),
     iconSize: [38, 38]
   })
   
@@ -36,7 +36,7 @@ function Map() {
 
   return (
     <>
-      <MapContainer center={ [defaultLocation.latitude, defaultLocation.longitude] } zoom={20} scrollWheelZoom={true}>
+      <MapContainer center={ [defaultLocation.latitude, defaultLocation.longitude] } zoom={16} scrollWheelZoom={true}>
         {/* <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
