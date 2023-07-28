@@ -4,6 +4,7 @@ const mongoose = require('./index.js');
 const placeSchema = mongoose.Schema(
   {
     /* *** required fields *** */
+
     location: {
       type: {
         latitude: Number,
@@ -23,8 +24,10 @@ const placeSchema = mongoose.Schema(
       type: String, // file path
       required: true
     },
+
     /* *** optional fields *** */
-    information: {
+
+    description: {
       type: String,
       required: false
     },
@@ -48,7 +51,7 @@ const placeSchema = mongoose.Schema(
 //   date: new Date(),
 //   title: 'Sample Place',
 //   icon: 'path/to/icon.png',
-//   information: 'Some information about the place',
+//   description: 'Some information about the place',
 //   popUp: 'Popup message',
 //   files: [
 //     'path/to/file1.jpg',
