@@ -1,5 +1,11 @@
+
 .map-container {
+  margin-top: 5rem;
+  position: relative;
   border-radius: 50%;
+  background: rgba(238, 130, 53,1);
+  border: none;
+
 }
 .map-overlay {
   z-index: 10;
@@ -7,7 +13,8 @@
   width: 640px;
   position: absolute;
   border-radius: 50%;
-  background: rgb(179,209,209);
-  background: radial-gradient(circle, rgba(179,209,209,0) 0%, rgba(179,209,209,0) 55%, rgba(179,209,209,1) 70%, rgba(179,209,209,1) 100%);
+  border: none;
+  background: rgba(238, 130, 53,1);
+  background: radial-gradient(circle, rgba(238, 130, 53,0) 0%, rgba(238, 130, 53,0) 55%, rgba(238, 130, 53, 1) 60%, rgba(238, 130, 53, 1) 100%);
   pointer-events: none;
 }

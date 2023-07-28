@@ -1,9 +1,10 @@
 
 .leaflet-container {
   position: relative;
-  /* z-index: -20; */
   height: 640px;
   width: 640px;
-  opacity: 0.9;
+  opacity: 0.99;
   border-radius: 50%;
+  border: none;
+  background: rgba(238, 130, 53,1);
 }

@@ -9,6 +9,7 @@ const PORT = 5050;
 app.use(cors());
 app.use(express.json());
 
+const mongoose = require('../database/index.js');
 //app.use(router);
 
 app.listen(PORT, () => {
