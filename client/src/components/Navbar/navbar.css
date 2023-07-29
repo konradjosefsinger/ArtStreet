@@ -3,7 +3,7 @@
   z-index: 20;
   top: 0;
   height: 7vh;
-  width: 100vw;
+  width: 100%;
   background: rgb(60, 60, 60);
   padding: 0 7.5vh;
   display: flex;

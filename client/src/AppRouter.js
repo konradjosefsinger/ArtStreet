@@ -8,13 +8,13 @@ import Logout from './pages/Logout';
 import Register from './pages/Register';
 import Update from './pages/Update';
 
-function AppRouter () {
+function AppRouter ({ places }) {
   return (
   <>
     <BrowserRouter>
       <Routes>
         <Route path='about' element={ <About /> } />
-        <Route path='/' element={ <Home /> } />
+        <Route path='/' element={ <Home places={ places } /> } />
         <Route path='login' element={ <Login /> } />
         <Route path='logout' element={ <Logout /> } />
         <Route path='register' element={ <Register /> } />

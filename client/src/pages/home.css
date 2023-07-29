@@ -1,6 +1,6 @@
 
 .map-container {
-  margin-top: 10rem;
+  margin-top: 6rem;
   position: relative;
   background: rgba(238, 130, 53,1);
   border: none;
@@ -8,8 +8,10 @@
 }
 .map-overlay {
   z-index: 10;
-  height: 640px;
-  width: 640px;
+  height: 720px;
+  width: 720px;
+  /* height: 80%;
+  width: 80%; */
   position: absolute;
   border: none;
   background: rgba(238, 130, 53,1);

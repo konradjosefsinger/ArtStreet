@@ -1,25 +1,27 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Icon } from 'leaflet';
+import MarkerClusterGroup from 'react-leaflet-cluster';
+import { Icon, divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './map.css'
-// import useGeoLocation from '../services/GeoLocation';
+import { useState, useEffect } from 'react';
+import useGeoLocation from '../../services/GeoLocation';
 
-function Map() {
+function Map({ places }) {
+  
+  let location = useGeoLocation();
 
-  //const location = useGeoLocation();
-  //console.log(location) // output: {latitude: 52.5071943, longitude: 13.3778364, error: null}
-  //const mapCenter = [location.latitude, location.longitude];
-  //console.log(mapCenter);
+  // const [loading, setLoading] = useState(false);
 
-  const defaultLocation = {
-    latitude: 52.5071966,
-    longitude: 13.3778324,
-  }
+  // useEffect(() => {
+  //   setLoading(true);
+  //   useGeoLocation()
+  // })
 
   const customIcon = new Icon ({
     iconUrl: require ('../../assets/markers/1f340.png'),
-    iconSize: [38, 38]
+    iconSize: [33, 33]
   })
+  
   
   const markers = [
     {
@@ -33,10 +35,36 @@ function Map() {
       icon: customIcon
     }
   ]
+  // const defaultLocation = {
+    //   latitude: 52.5071966,
+    //   longitude: 13.3778324,
+    // }
+
+    const customClusterIcon = (cluster) => {
+      return new divIcon({
+        html: `<div class="cluster-icon">${cluster.getChildCount()}</div>`,
+        className: "custom-marker-cluster",
+        iconSize: [33, 33]
+      });
+    };
+
+  const Spinner = () => <div className="spinner">Loading...</div>;
 
   return (
-    <>
-      <MapContainer center={ [defaultLocation.latitude, defaultLocation.longitude] } zoom={16} scrollWheelZoom={true}>
+    <> {
+      !location ? (
+        <Spinner />
+      ) : (
+      <MapContainer
+        center={ [location.latitude, location.longitude] }
+        zoom={16}
+        minZoom={2}
+        scrollWheelZoom={true}
+        maxBounds={[
+          [90, -215],
+          [-77, 240],
+        ]}
+        maxBoundsViscosity={1.0}>
         {/* <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -47,11 +75,16 @@ function Map() {
           url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
         />
 
-        {markers.map((marker, index) => (
-          <Marker key={index} position={marker.location} icon={marker.icon} ></Marker>
-        ))}
+        <MarkerClusterGroup
+          chunkedLoading
+          iconCreateFunction={customClusterIcon}>
+          {/* {places.map((place, i) => (
+            <Marker key={i} position={place.location} icon={place.icon} ></Marker>
+          ))} */}
+        </MarkerClusterGroup>
 
       </MapContainer>
+      )}
     </>
   )
 }
