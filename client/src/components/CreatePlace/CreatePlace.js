@@ -7,7 +7,7 @@ import useGeoLocation from '../../services/GeoLocation';
 import './create-place.css';
 import { createPlace } from '../../services/ApiService.js';
 
-  function CreatePlace() {
+  function CreatePlace({ pushNewPlace }) {
 
     let geoLocation = useGeoLocation();
     // // const navigate = useNavigate();
@@ -44,6 +44,7 @@ import { createPlace } from '../../services/ApiService.js';
     event.preventDefault();
     // console.log(formData);
     createPlace(formData);
+    pushNewPlace(formData);
   }
 
   const handleChange = (event) => {
@@ -58,7 +59,13 @@ import { createPlace } from '../../services/ApiService.js';
     <>
     <div className="create-wrapper">
 
-      <h3>create new place</h3>
+      <div className="form-top-wrapper">
+        <h3>create new place</h3>
+        <div className="location-wrapper">
+          <p>Latitude: <div className="location-data"><p>{formData.location.latitude}</p></div></p>
+          <p>Longitude: <div className="location-data"><p>{formData.location.longitude}</p></div></p>
+        </div>
+      </div>
 
       <form className='new-place' onSubmit={handleSubmit}>
 

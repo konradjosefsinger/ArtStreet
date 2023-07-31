@@ -1,11 +1,11 @@
 import CreatePlace from '../components/CreatePlace/CreatePlace.js';
 import Map from '../components/Map/Map.js';
 
-function Home({ places }) {
+function Home({ places, pushNewPlace }) {
   return (
     <>
       <Map places={ places } />
-      <CreatePlace />
+      <CreatePlace pushNewPlace={ pushNewPlace } />
     </>
   );
 }

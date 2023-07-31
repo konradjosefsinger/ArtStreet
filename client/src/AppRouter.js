@@ -8,7 +8,7 @@ import Register from './pages/Register';
 
 import Navbar from './components/Navbar/navbar';
 
-function AppRouter ({ places }) {
+function AppRouter ({ places, pushNewPlace }) {
   return (
   <>
     <BrowserRouter>
@@ -16,7 +16,7 @@ function AppRouter ({ places }) {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path='about' element={ <About /> } />
-        <Route path='home' element={ <Home places={ places } /> } />
+        <Route path='home' element={ <Home pushNewPlace={ pushNewPlace } places={ places } /> } />
         <Route path='login' element={ <Login /> } />
         <Route path='logout' element={ <Logout /> } />
         <Route path='register' element={ <Register /> } />

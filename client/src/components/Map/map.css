@@ -9,24 +9,43 @@
   border: none;
   background: var(--main-bg-color);
 }
+.leaflet-control-fullscreen {
+  top: 4.5rem;
+}
+.leaflet-touch .leaflet-control-fullscreen a {
+  background-image: url("../../assets/markers/black-square-button_1f532.png");
+  position: relative;
+  background-size: 85%;
+  background-position: 50%;
+}
+.leaflet-touch.leaflet-fullscreen-on .leaflet-control-fullscreen a {
+  background-position: none;
+}
+.leaflet-touch.leaflet-fullscreen-on .leaflet-control-fullscreen a {
+  background-position: none;
+}
 
+.leaflet-bar a:focus {
+  background-color: rgba(238, 130, 53, 0.8);
+}
 
 .leaflet-bar a {
   background-color: rgba(238, 130, 53, 0.6);
   border: none;
 }
 .leaflet-bar a:hover {
-  background: rgba(238, 130, 53, 0.8);
+  background-color: rgba(238, 130, 53, 0.8);
   border: none;
 }
 .leaflet-bar a:focus {
-  background: rgba(238, 130, 53, 0.8);
+  background-color: rgba(238, 130, 53, 0.8);
 }
 
 .leaflet-retina .leaflet-control-layers-toggle {
   background-image: url("../../assets/markers/black-circle_26ab.png");
   background-size: 85%;
   background-color: rgba(238, 130, 53, 0.6);
+
 }
 .leaflet-retina .leaflet-control-layers-toggle:hover {
   background: rgba(238, 130, 53, 0.8);
@@ -45,9 +64,7 @@
 
 .leaflet-control-fullscreen-button {
   position: absolute;
-  top: 100px;
 }
-
 
 .leaflet-bottom .leaflet-control {
   margin-bottom: 0rem;

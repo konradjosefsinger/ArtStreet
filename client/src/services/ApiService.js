@@ -1,22 +1,11 @@
-const baseURL = 'http://127.0.0.1:5050';
+
+const BASE_URL = 'http://127.0.0.1:5050'
 
 
 /* *** create *** */
 
-// function createPlace (place) {
-//   return fetch(baseURL + '/places/', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(place)
-//   })
-//   .console.log(place)
-//   .catch(err => console.log(err));
-// }
-
 function createPlace(place) {
-  return fetch(baseURL + '/places/', {
+  return fetch(BASE_URL + '/places/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -26,7 +15,7 @@ function createPlace(place) {
   .then(response => response.json())
   .then(newPlace => {
     console.log('New place created:', newPlace);
-    return newPlace; // Return the newPlace object to the calling code if needed
+    return newPlace;
   })
   .catch(err => console.log(err));
 }
@@ -35,7 +24,7 @@ function createPlace(place) {
 /* *** read *** */
 
 function getPlaces () {
-  return fetch(baseURL + '/places/')
+  return fetch(BASE_URL + '/places/')
     .then(async res => {
       const data = await res.json();
       return data;
@@ -47,7 +36,7 @@ function getPlaces () {
 /* *** update *** */
 
 function editPlace(id, newData) {
-  return fetch(baseURL + '/places/' + id, {
+  return fetch(BASE_URL + '/places/' + id, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -61,7 +50,7 @@ function editPlace(id, newData) {
 /* *** delete *** */
 
 function deletePlace (id) {
-  return fetch(baseURL + /places/ + id, {
+  return fetch(BASE_URL + /places/ + id, {
     method: "DELETE"
   })
   .catch(err => console.log(err));

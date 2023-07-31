@@ -34,10 +34,17 @@ function App () {
     });
   }, []);
 
+  function pushNewPlace(place) {
+    ApiClient.getPlaces()
+      .then((data) => {
+        setPlaces([...data, place]);
+      })
+  }
+
   return (
   <>
     <main>
-      <AppRouter places={ places } />
+      <AppRouter places={ places } setPlaces={ setPlaces } pushNewPlace={ pushNewPlace } />
     </main>
   </>
   )

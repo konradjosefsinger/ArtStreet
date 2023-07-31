@@ -16,12 +16,11 @@ function PopUpWindow({ place }) {
     <>
       <Popup>
         <div className="upper-box">
-          <div className="location-wrapper">
             <p>Latitude: <div className="location-data"><p>{place.location.latitude}</p></div></p>
             <p>Longitude: <div className="location-data"><p>{place.location.longitude}</p></div></p>
-          </div>
         </div>
         <div className="popup-container">
+
           <h3 className="popup-header">{place.title}</h3>
           <p className="description">{place.description}</p>
           <p className="date-format">{ dateShort(place.date) }</p>

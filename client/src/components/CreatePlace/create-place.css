@@ -10,19 +10,11 @@
   bottom: -16.2rem;
   padding: 0rem 2rem 1rem 2rem;
 }
-.create-wrapper h3 {
-  margin: 1.5rem 0rem 0.5rem 0rem;
-}
 .create-wrapper:hover {
   bottom: 0rem;
   transition: bottom 0.3s;
 }
-.create-wrapper h3 {
-  color: var(--main-bg-color);
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
-  font-size: 2rem;
-  font-weight: 200;
-}
+
 
 .new-place input::placeholder {
   color: white;
@@ -84,4 +76,43 @@
 .new-place button:hover {
   cursor: pointer;
   opacity: 1;
+}
+
+.form-top-wrapper {
+  margin: 1rem 0rem 0rem 0rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.create-wrapper h3 {
+  margin: 0.5rem 0rem 0.5rem 0rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+  font-size: 2rem;
+  font-weight: 200;
+  cursor: pointer;
+}
+.create-wrapper h3:hover {
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+  color: var(--main-bg-color);
+  opacity: 0.8;
+}
+.location-wrapper {
+  display: flex;
+  flex-direction: row;
+  text-align: right;
+  margin: 0;
+}
+.location-wrapper p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 0.7rem;
+  color: var(--main-bg-color);
+  margin-left: 1rem;
+}
+.location-wrapper .location-data p {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 0.3
 }
