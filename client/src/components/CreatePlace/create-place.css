@@ -3,15 +3,15 @@
   flex-direction: column;
   justify-content: start;
   z-index: 100;
-  width: 42rem;
+  width: 36rem;
   height: 18rem;
   background: rgba(44, 44, 44, 0.8);
   position: absolute;
-  bottom: -14rem;
+  bottom: -16.2rem;
   padding: 0rem 2rem 1rem 2rem;
 }
 .create-wrapper h3 {
-  margin: 1rem 0rem 0.5rem 0rem;
+  margin: 1.5rem 0rem 0.5rem 0rem;
 }
 .create-wrapper:hover {
   bottom: 0rem;

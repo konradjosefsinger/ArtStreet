@@ -1,24 +1,4 @@
 
-/* .map-component {
-  position: absolute;
-  display: flex;
-  flex-direction: column-reverse;
-} */
-
-/* .leaflet-container {
-  filter: sepia(0.2);
-  position: relative;
-  /* height: 720px;
-  width: 720px;
-  height: 100vh;
-  width: 125vh;
-  opacity: 0.99;
-  /* border-radius: 50%;
-  border: none;
-  background: var(--main-bg-color);
-}
-*/
-
 .leaflet-container {
   position: fixed;
   top: 0;
@@ -30,17 +10,49 @@
   background: var(--main-bg-color);
 }
 
-/* .leaflet-popup-content-wrapper {
-  background: rgba(238, 130, 53,0.4);
-  border-radius: 0;
-} */
-/* .popup-container {
-  background: var(--main-bg-color);
+
+.leaflet-bar a {
+  background-color: rgba(238, 130, 53, 0.6);
   border: none;
-  margin: 0;
-  padding: 0;
-  opacity: 0.5;
-} */
+}
+.leaflet-bar a:hover {
+  background: rgba(238, 130, 53, 0.8);
+  border: none;
+}
+.leaflet-bar a:focus {
+  background: rgba(238, 130, 53, 0.8);
+}
+
+.leaflet-retina .leaflet-control-layers-toggle {
+  background-image: url("../../assets/markers/black-circle_26ab.png");
+  background-size: 85%;
+  background-color: rgba(238, 130, 53, 0.6);
+}
+.leaflet-retina .leaflet-control-layers-toggle:hover {
+  background: rgba(238, 130, 53, 0.8);
+  border: none;
+}
+.leaflet-retina .leaflet-control-layers-toggle:focus {
+  background: rgba(238, 130, 53, 0.8);
+}
+
+
+.leaflet-control-layers-expanded {
+  background: rgba(238, 130, 53, 0.8);
+  color: white;
+}
+
+
+.leaflet-control-fullscreen-button {
+  position: absolute;
+  top: 100px;
+}
+
+
+.leaflet-bottom .leaflet-control {
+  margin-bottom: 0rem;
+}
+
 
 .cluster-icon {
   height: 2rem;
@@ -66,6 +78,7 @@
   align-items: center;
 }
 
+
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
-  margin-top: 5.5rem;
+  bottom: 2rem
 }
