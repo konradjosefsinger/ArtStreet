@@ -14,7 +14,7 @@ const { BaseLayer } = LayersControl;
 
 // https://leaflet-extras.github.io/leaflet-providers/preview/
 
-function Map({ places }) {
+function Map({ places, updateAfterDelete }) {
   
   const Spinner = () => <div className="spinner">Loading...</div>;
   
@@ -122,8 +122,10 @@ function Map({ places }) {
                 position={[place.location.latitude, place.location.longitude]}
                 icon={orangeMarkerIcon}
               >
-                <PopUpWindow place={ place } />
-
+                <PopUpWindow
+                  place={ place }
+                  updateAfterDelete={ updateAfterDelete }
+                />
               </Marker>
               ))}
               <Marker

@@ -41,10 +41,22 @@ function App () {
       })
   }
 
+  function updateAfterDelete(placeId) {
+    ApiClient.deletePlace(placeId)
+      .then(() => {
+        setPlaces((prevPlaces) => prevPlaces.filter((place) => place._id !== placeId))
+      })
+  }
+
   return (
   <>
     <main>
-      <AppRouter places={ places } setPlaces={ setPlaces } pushNewPlace={ pushNewPlace } />
+      <AppRouter
+        places={ places }
+        setPlaces={ setPlaces }
+        pushNewPlace={ pushNewPlace }
+        updateAfterDelete={ updateAfterDelete }
+      />
     </main>
   </>
   )
