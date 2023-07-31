@@ -40,6 +40,23 @@ async function getPlaces (req, res) {
   }
 }
 
+/* *** READ ONE BY ID *** */
+
+async function getPlaceById(req, res) {
+  try {
+    const placeId = req.params.id;
+    const place = await Place.findById(placeId);
+    if (!place) {
+      res.status(404).send('Place not found'); // 404 not found
+      return;
+    }
+    res.status(200).send(place); // 200 OK
+  } catch (err) {
+    res.status(500).send(err.message); // 500 internal server error
+  }
+}
+
+
 
 /* *** UPDATE *** */
 
@@ -80,6 +97,18 @@ async function deletePlace (req, res) {
     res.status(500).send(err.message);  // 500 internal server error
   }
 }
+
+
+// 
+// async function deleteAllPlaces(req, res) {
+//   try {
+//     await Place.deleteMany({});
+//     res.status(200).send(); // 200 OK
+//   } catch (err) {
+//     res.status(500).send(err.message); // 500 internal server error
+//   }
+// }
+//
 
 
 module.exports = { createPlace, getPlaces, editPlace, deletePlace };

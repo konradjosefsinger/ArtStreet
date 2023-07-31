@@ -1,0 +1,87 @@
+.create-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  z-index: 100;
+  width: 42rem;
+  height: 18rem;
+  background: rgba(44, 44, 44, 0.8);
+  position: absolute;
+  bottom: -14rem;
+  padding: 0rem 2rem 1rem 2rem;
+}
+.create-wrapper h3 {
+  margin: 1rem 0rem 0.5rem 0rem;
+}
+.create-wrapper:hover {
+  bottom: 0rem;
+  transition: bottom 0.3s;
+}
+.create-wrapper h3 {
+  color: var(--main-bg-color);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.new-place input::placeholder {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin: 0 0 0.2rem 0;
+}
+.new-place textarea::placeholder  {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin: 0 0 0.2rem 0;
+}
+
+.new-place input,
+.new-place textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1px; /* Update the border-radius value to create rounded corners */
+  font-size: 1rem;
+  color: var(--main-bg-color);
+  margin: 0.2rem 0rem 0.2rem 0rem;
+  background-color: rgba(255, 235, 205, 0.3);
+}
+
+
+.new-place input:focus {
+  outline: none;
+  background-color: rgb(255, 235, 205, 0.9);
+}
+.new-place textarea:focus {
+  outline: none;
+  background-color: rgb(255, 235, 205, 0.9);
+}
+.new-place input:not(:focus):hover {
+  cursor: text;
+  background-color: rgba(255, 235, 205, 0.6);
+}
+.new-place textarea:not(:focus):hover {
+  cursor: text;
+  background-color: rgba(255, 235, 205, 0.6);
+}
+.new-place button {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  background: var(--main-bg-color);
+  border: none;
+  border-radius: 1px;
+  color: white;
+  margin: 0.5rem 0rem 0.5rem 0rem;
+  opacity: 0.85;
+}
+.new-place button:hover {
+  cursor: pointer;
+  opacity: 1;
+}

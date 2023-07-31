@@ -1,92 +1,139 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, LayersControl, ZoomControl, Marker, Popup } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { Icon, divIcon } from 'leaflet';
+import 'leaflet-fullscreen/dist/Leaflet.fullscreen.js';
+import 'leaflet-fullscreen/dist/leaflet.fullscreen.css';
 import 'leaflet/dist/leaflet.css';
 import './map.css'
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import useGeoLocation from '../../services/GeoLocation';
+
+import PopUpWindow from '../PopUp/PopUpWindow';
+
+const { BaseLayer } = LayersControl;
+
+// https://leaflet-extras.github.io/leaflet-providers/preview/
 
 function Map({ places }) {
   
+  const Spinner = () => <div className="spinner">Loading...</div>;
+  
   let location = useGeoLocation();
-
-  // const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   useGeoLocation()
-  // })
-
-  const customIcon = new Icon ({
-    iconUrl: require ('../../assets/markers/1f340.png'),
+  
+  const orangeMarkerIcon = new Icon ({
+    iconUrl: require ('../../assets/markers/Map-Marker-Free-Download-PNG.png'),
     iconSize: [33, 33]
   })
   
+  const hatchingChickIcon = new Icon ({
+    iconUrl: require ('../../assets/markers/NicePng_chicken-emoji-png_3561061.png'),
+    iconSize: [42, 42]
+  })
   
-  const markers = [
-    {
-      location: [52, 13],
-      popUp: 'YeahYeah',
-      icon: customIcon
-    },
-    {
-      location: [52, 14],
-      popUp: 'YeahYeah',
-      icon: customIcon
+  const customClusterIcon = (cluster) => {
+    return new divIcon({
+      html: `<div class="cluster-icon">${cluster.getChildCount()}</div>`,
+      className: "custom-marker-cluster",
+      iconSize: [33, 33]
+    });
+  };
+  
+  const mapRef = useRef();
+
+  useEffect(() => {
+    const { current: map } = mapRef;
+    if (map) {
+      map.on('fullscreenchange', handleOnToggleFullscreen);
     }
-  ]
-  // const defaultLocation = {
-    //   latitude: 52.5071966,
-    //   longitude: 13.3778324,
-    // }
+  }, []);
 
-    const customClusterIcon = (cluster) => {
-      return new divIcon({
-        html: `<div class="cluster-icon">${cluster.getChildCount()}</div>`,
-        className: "custom-marker-cluster",
-        iconSize: [33, 33]
-      });
-    };
+  function handleOnToggleFullscreen() {
+    const { current: map } = mapRef;
+    if (map) {
+      console.log(`Fullscreen: ${map.isFullscreen() ? 'yes' : 'no'}`);
+    }
+  }
+  
+  
+  
+  // const [tileLayer, setTileLayer] = useState(false);
+  // const [dataLoaded, setDataLoaded] = useState(false);
 
-  const Spinner = () => <div className="spinner">Loading...</div>;
+    // const toggleLayer = () => {
+    //   setTileLayer((prev) => !prev);
+    // };
 
   return (
-    <> {
-      !location ? (
+    <div className='map-component'>
+
+      {!location ? (
         <Spinner />
       ) : (
-      <MapContainer
-        center={ [location.latitude, location.longitude] }
-        zoom={16}
-        minZoom={2}
-        scrollWheelZoom={true}
-        maxBounds={[
-          [90, -215],
-          [-77, 240],
-        ]}
-        maxBoundsViscosity={1.0}>
-        {/* <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        /> */}
+        <MapContainer
+          ref={mapRef}
+          fullscreenControl={true}
+          center={[location.latitude, location.longitude]}
+          zoom={16}
+          minZoom={3}
+          scrollWheelZoom={true}
+          zoomSnap={0}
+          zoomControl={false}
+          maxBounds={[
+            [85, -215],
+            [-65, 240],
+          ]}
+          maxBoundsViscosity={1.0}
+        >
 
-        <TileLayer
-          attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-          url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
-        />
+          <LayersControl position="bottomleft">
+            <BaseLayer checked name="LivingLightly">
+              <TileLayer
+                attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+                url='https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
 
-        <MarkerClusterGroup
-          chunkedLoading
-          iconCreateFunction={customClusterIcon}>
-          {/* {places.map((place, i) => (
-            <Marker key={i} position={place.location} icon={place.icon} ></Marker>
-          ))} */}
-        </MarkerClusterGroup>
+              />
+            </BaseLayer>
+            <BaseLayer name="DarkSoul">
+              <TileLayer
+                attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+                url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+              />
+            </BaseLayer>
+            <BaseLayer name="Satellite">
+              <TileLayer
+                attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
+                url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                />
+            </BaseLayer>
+          </LayersControl>
 
-      </MapContainer>
+          <ZoomControl position="bottomright" zoomInText="➕" zoomOutText="➖" />
+  
+          <MarkerClusterGroup chunkedLoading iconCreateFunction={customClusterIcon}>
+            {places.map((place, i) => (
+              <Marker
+                key={i}
+                position={[place.location.latitude, place.location.longitude]}
+                icon={orangeMarkerIcon}
+              >
+                <PopUpWindow place={ place } />
+
+              </Marker>
+              ))}
+              <Marker
+                name="homeLocation"
+                title="let\'s ge started"
+                position={[location.latitude, location.longitude]}
+                icon={hatchingChickIcon}
+                draggable={true}
+              />
+
+          </MarkerClusterGroup>
+        </MapContainer>
       )}
-    </>
-  )
+    </div>
+  );
+
 }
 
 export default Map;

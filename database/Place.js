@@ -10,7 +10,7 @@ const placeSchema = mongoose.Schema(
         latitude: Number,
         longitude: Number
       },
-      required: true,
+      required: true
     },
     date: {
       type: Date,
@@ -21,8 +21,8 @@ const placeSchema = mongoose.Schema(
       required: true
     },
     icon: {
-      type: String, // file path
-      required: true
+      type: String,
+      required: false
     },
 
     /* *** optional fields *** */
@@ -37,11 +37,11 @@ const placeSchema = mongoose.Schema(
     },
     link: {
       type: String, // URL or link path
-      required: false,
+      required: false
     },
     files: [{
       type: String, // URL or file path
-      required: false,
+      required: false
     }],
   }
 );

@@ -1,25 +1,25 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import About from './pages/About';
-import FullScreen from './pages/FullScreen';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Register from './pages/Register';
-import Update from './pages/Update';
+
+import Navbar from './components/Navbar/navbar';
 
 function AppRouter ({ places }) {
   return (
   <>
     <BrowserRouter>
+      <Navbar />
       <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route path='about' element={ <About /> } />
-        <Route path='/' element={ <Home places={ places } /> } />
+        <Route path='home' element={ <Home places={ places } /> } />
         <Route path='login' element={ <Login /> } />
         <Route path='logout' element={ <Logout /> } />
         <Route path='register' element={ <Register /> } />
-        <Route path='update' element={ <Update /> } />
-        <Route path='fullscreen' element={ <FullScreen /> } />
       </Routes>
     </BrowserRouter>
   </>
