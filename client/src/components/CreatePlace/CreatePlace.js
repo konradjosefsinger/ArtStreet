@@ -45,7 +45,13 @@ import { createPlace } from '../../services/ApiService.js';
     // console.log(formData);
     createPlace(formData);
     pushNewPlace(formData);
-  }
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      title: '',
+      description: ''
+    }));
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;

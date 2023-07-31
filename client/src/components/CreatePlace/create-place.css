@@ -43,25 +43,25 @@
   font-size: 1rem;
   color: var(--main-bg-color);
   margin: 0.2rem 0rem 0.2rem 0rem;
-  background-color: rgba(255, 235, 205, 0.3);
+  background-color: rgba(255, 235, 205, 0.2);
 }
 
 
 .new-place input:focus {
   outline: none;
-  background-color: rgb(255, 235, 205, 0.9);
+  background-color: rgb(255, 235, 205, 0.5);
 }
 .new-place textarea:focus {
   outline: none;
-  background-color: rgb(255, 235, 205, 0.9);
+  background-color: rgb(255, 235, 205, 0.5);
 }
 .new-place input:not(:focus):hover {
   cursor: text;
-  background-color: rgba(255, 235, 205, 0.6);
+  background-color: rgba(255, 235, 205, 0.3);
 }
 .new-place textarea:not(:focus):hover {
   cursor: text;
-  background-color: rgba(255, 235, 205, 0.6);
+  background-color: rgba(255, 235, 205, 0.3);
 }
 .new-place button {
   width: 100%;
@@ -96,7 +96,6 @@
 .create-wrapper h3:hover {
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
   color: var(--main-bg-color);
-  opacity: 0.8;
 }
 .location-wrapper {
   display: flex;
