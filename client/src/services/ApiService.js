@@ -5,7 +5,7 @@ const BASE_URL = 'http://127.0.0.1:5050'
 /* *** create *** */
 
 function createPlace(place) {
-  return fetch(BASE_URL + '/places/', {
+  return fetch(BASE_URL + '/places', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ function createPlace(place) {
 /* *** read *** */
 
 function getPlaces () {
-  return fetch(BASE_URL + '/places/')
+  return fetch(BASE_URL + '/places')
     .then(async res => {
       const data = await res.json();
       return data;

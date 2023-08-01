@@ -1,7 +1,7 @@
 import './popup-window.css';
 import { Popup } from 'react-leaflet'
 
-import { dateShort, formatDate } from '../../services/dateFormats.js';
+import { formatDate } from '../../services/dateFormats.js';
 
 import { deletePlace } from '../../services/ApiService.js'
 
@@ -17,8 +17,8 @@ function PopUpWindow({ place, updateAfterDelete }) {
     <>
       <Popup>
         <div className="upper-box">
-            <div><p>Latitude: <div className="location-data"><p>{place.location.latitude}</p></div></p></div>
-            <div><p>Longitude: <div className="location-data"><p>{place.location.longitude}</p></div></p></div>
+            <div><p>Latitude: </p><p className="location-data">{place.location.latitude}</p></div>
+            <div><p>Longitude: </p><p className="location-data">{place.location.longitude}</p></div>
         </div>
         <div className="popup-container">
           <h3 className="popup-header">{place.title}</h3>
@@ -36,4 +36,15 @@ function PopUpWindow({ place, updateAfterDelete }) {
   );
 }
 
-export default PopUpWindow;
+function PopUpLocation({ location }) {
+  return (
+    <>
+      <div className="upper-box">
+          <div><p>Latitude: <div className="location-data"><p>{location.latitude}</p></div></p></div>
+          <div><p>Longitude: <div className="location-data"><p>{location.longitude}</p></div></p></div>
+      </div>
+    </>
+  )
+}
+
+export { PopUpWindow, PopUpLocation };

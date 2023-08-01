@@ -21,7 +21,7 @@ const placeSchema = mongoose.Schema(
       required: true
     },
     icon: {
-      type: String,
+      type: Number,
       required: false
     },
 

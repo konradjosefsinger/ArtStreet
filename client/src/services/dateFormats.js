@@ -1,15 +1,3 @@
-function dateShort(dateString) {
-  const date = new Date(dateString);
-  const day = date.getDate();
-  const suffix = getSuffix(day);
-  const month = date.toDateString().slice(4, 7);
-  const string = day + suffix + " " + month;
-  return string;
-}
-
-function dateForm (dateString) {
-  return new Intl.DateTimeFormat('en-GB')
-}
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -40,4 +28,4 @@ function getSuffix(day) {
   }
 }
 
-module.exports = { dateShort, formatDate, dateForm };
+module.exports = {  formatDate };

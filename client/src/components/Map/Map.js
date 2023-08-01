@@ -5,10 +5,10 @@ import 'leaflet-fullscreen/dist/Leaflet.fullscreen.js';
 import 'leaflet-fullscreen/dist/leaflet.fullscreen.css';
 import 'leaflet/dist/leaflet.css';
 import './map.css'
-import { useRef, useState, useEffect } from 'react';
+import { useRef,useState, useEffect } from 'react';
 import useGeoLocation from '../../services/GeoLocation';
 
-import PopUpWindow from '../PopUp/PopUpWindow';
+import { PopUpWindow, PopUpLocation } from '../PopUp/PopUpWindow';
 
 const { BaseLayer } = LayersControl;
 
@@ -19,7 +19,34 @@ function Map({ places, updateAfterDelete }) {
   const Spinner = () => <div className="spinner">Loading...</div>;
   
   let location = useGeoLocation();
+
+
+
+  // const [position, setPosition] = useState([]);
+
+  // useEffect(() => {
+  //   if (location) {
+  //     setPosition([location.latitude, location.longitude]);
+  //   }
+  // }, [location.latitude, location.longitude]);
+
+  // const handleMarkerDrag = (e) => {
+  //   setPosition(e.latlng);
+  // };
   
+  const mapleLeaf = new Icon ({
+    iconUrl: require ('../../assets/markers/maple-leaf_1f341.png'),
+    iconSize: [33, 33]
+  })
+  const heartExclamation = new Icon ({
+    iconUrl: require ('../../assets/markers/heart-exclamation_2763-fe0f.png'),
+    iconSize: [33, 33]
+  })
+  const pizzaIcon = new Icon ({
+    iconUrl: require ('../../assets/markers/pizza_1f355.png'),
+    iconSize: [33, 33]
+  })
+
   const orangeMarkerIcon = new Icon ({
     iconUrl: require ('../../assets/markers/Map-Marker-Free-Download-PNG.png'),
     iconSize: [33, 33]
@@ -29,6 +56,15 @@ function Map({ places, updateAfterDelete }) {
     iconUrl: require ('../../assets/markers/NicePng_chicken-emoji-png_3561061.png'),
     iconSize: [42, 42]
   })
+
+  const getIconForPlace = (place) => {
+    const renderIcon = {
+      1: mapleLeaf,
+      2: heartExclamation,
+      3: pizzaIcon,
+    };
+    return renderIcon[place.icon] || orangeMarkerIcon;
+  };
   
   const customClusterIcon = (cluster) => {
     return new divIcon({
@@ -53,15 +89,6 @@ function Map({ places, updateAfterDelete }) {
       console.log(`Fullscreen: ${map.isFullscreen() ? 'yes' : 'no'}`);
     }
   }
-  
-  
-  
-  // const [tileLayer, setTileLayer] = useState(false);
-  // const [dataLoaded, setDataLoaded] = useState(false);
-
-    // const toggleLayer = () => {
-    //   setTileLayer((prev) => !prev);
-    // };
 
   return (
     <div className='map-component'>
@@ -116,11 +143,11 @@ function Map({ places, updateAfterDelete }) {
           <ZoomControl position="bottomright" zoomInText="➕" zoomOutText="➖" />
   
           <MarkerClusterGroup chunkedLoading iconCreateFunction={customClusterIcon}>
-            {places.map((place, i) => (
-              <Marker
-                key={i}
-                position={[place.location.latitude, place.location.longitude]}
-                icon={orangeMarkerIcon}
+          {places.map((place, i) => (
+          <Marker
+            key={i}
+            icon={getIconForPlace(place)}
+            position={[place.location.latitude, place.location.longitude]}
               >
                 <PopUpWindow
                   place={ place }
@@ -134,7 +161,15 @@ function Map({ places, updateAfterDelete }) {
                 position={[location.latitude, location.longitude]}
                 icon={hatchingChickIcon}
                 draggable={true}
-              />
+                // eventHandlers={{
+                //   dragend: handleMarkerDrag,
+                // }}
+              >
+                {/* <Popup>
+                  <PopUpLocation location={ [position.latitude, position.longitude] } />
+                </Popup> */}
+              </Marker>
+
 
           </MarkerClusterGroup>
         </MapContainer>

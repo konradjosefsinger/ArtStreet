@@ -1,6 +1,4 @@
 
-// useGeolocation.js
-
 import { useState, useEffect } from 'react';
 
 const defaultLocation = {

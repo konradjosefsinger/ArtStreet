@@ -7,6 +7,10 @@ import useGeoLocation from '../../services/GeoLocation';
 import './create-place.css';
 import { createPlace } from '../../services/ApiService.js';
 
+import icon1 from "../../assets/markers/maple-leaf_1f341.png";
+import icon2 from "../../assets/markers/heart-exclamation_2763-fe0f.png";
+import icon3 from "../../assets/markers/pizza_1f355.png";
+
   function CreatePlace({ pushNewPlace }) {
 
     let geoLocation = useGeoLocation();
@@ -21,7 +25,7 @@ import { createPlace } from '../../services/ApiService.js';
       },
       date: new Date(Date.now()).toISOString().slice(0, 16).split('.').join('/'),
       title: '',
-      icon: '',
+      icon: 0,
       description: '',
       popUp: '',
       link: '',
@@ -39,38 +43,73 @@ import { createPlace } from '../../services/ApiService.js';
         }));
       }
     }, [geoLocation]);
+    
+    const [selectedIcon, setSelectedIcon] = useState(null);
+  
+    const handleIconClick = (iconId) => {
+      setSelectedIcon(iconId);
+      setFormData((prevData) => ({
+        ...prevData,
+        icon: iconId
+      }))
+    };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    // console.log(formData);
-    createPlace(formData);
-    pushNewPlace(formData);
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      // console.log(formData);
+      createPlace(formData);
+      pushNewPlace(formData);
+      console.log(formData.icon)
 
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      title: '',
-      description: ''
-    }));
-  };
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        title: '',
+        icon: 0,
+        description: ''
+      }));
+    };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    };
 
-  return (
-    <>
-    <div className="create-wrapper">
 
-      <div className="form-top-wrapper">
-        <h3>create new place</h3>
+    return (
+      <>
+      <div className="create-wrapper">
+
+        <div className="form-top-wrapper">
+
+        <div className="marker-selection-wrapper">
+        <h3 onClick={handleSubmit}>create new place</h3>
+        <ul className="marker-selection">
+          <li className={`marker-id-1 ${selectedIcon === 1 ? "selected" : ""}`}>
+            <button onClick={() => handleIconClick(1)}>
+              <img src={icon1} alt="1" width="29" height="29" />
+            </button>
+          </li>
+          <li className={`marker-id-2 ${selectedIcon === 2 ? "selected" : ""}`}>
+            <button onClick={() => handleIconClick(2)}>
+              <img src={icon2} alt="2" width="27" height="27" />
+            </button>
+          </li>
+          <li className={`marker-id-3 ${selectedIcon === 3 ? "selected" : ""}`}>
+            <button onClick={() => handleIconClick(3)}>
+              <img src={icon3} alt="3" width="27" height="27" />
+            </button>
+          </li>
+        </ul>
+      </div>
+
         <div className="location-wrapper">
-          <p>Latitude: <div className="location-data"><p>{formData.location.latitude}</p></div></p>
-          <p>Longitude: <div className="location-data"><p>{formData.location.longitude}</p></div></p>
+          <p>Latitude: </p><p className="location-data">{formData.location.latitude}</p>
+          <p>Longitude: </p><p className="location-data">{formData.location.longitude}</p>
         </div>
+
       </div>
 
       <form className='new-place' onSubmit={handleSubmit}>
@@ -94,11 +133,11 @@ import { createPlace } from '../../services/ApiService.js';
             value={formData.description}
             onChange={handleChange}
             rows={4} // Set the number of visible rows for the textarea
-            cols={40} // Set the number of visible columns for the textarea
+            cols={36} // Set the number of visible columns for the textarea
           />
         </div>
 
-        <button className='submit-btn' type="submit">Create</button>
+          <button className='submit-btn' type="submit">create</button>
 
       </form>
 
