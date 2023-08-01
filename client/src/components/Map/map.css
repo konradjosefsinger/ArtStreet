@@ -1,76 +1,3 @@
-
-.leaflet-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.99;
-  border: none;
-  background: var(--main-bg-color);
-}
-.leaflet-control-fullscreen {
-  top: 4.5rem;
-}
-.leaflet-touch .leaflet-control-fullscreen a {
-  background-image: url("../../assets/markers/black-square-button_1f532.png");
-  position: relative;
-  background-size: 85%;
-  background-position: 50%;
-}
-.leaflet-touch.leaflet-fullscreen-on .leaflet-control-fullscreen a {
-  background-position: none;
-}
-.leaflet-touch.leaflet-fullscreen-on .leaflet-control-fullscreen a {
-  background-position: none;
-}
-
-.leaflet-bar a:focus {
-  background-color: rgba(238, 130, 53, 0.8);
-}
-
-.leaflet-bar a {
-  background-color: rgba(238, 130, 53, 0.6);
-  border: none;
-}
-.leaflet-bar a:hover {
-  background-color: rgba(238, 130, 53, 0.8);
-  border: none;
-}
-.leaflet-bar a:focus {
-  background-color: rgba(238, 130, 53, 0.8);
-}
-
-.leaflet-retina .leaflet-control-layers-toggle {
-  background-image: url("../../assets/markers/black-circle_26ab.png");
-  background-size: 85%;
-  background-color: rgba(238, 130, 53, 0.6);
-
-}
-.leaflet-retina .leaflet-control-layers-toggle:hover {
-  background: rgba(238, 130, 53, 0.8);
-  border: none;
-}
-.leaflet-retina .leaflet-control-layers-toggle:focus {
-  background: rgba(238, 130, 53, 0.8);
-}
-
-
-.leaflet-control-layers-expanded {
-  background: rgba(238, 130, 53, 0.8);
-  color: white;
-}
-
-
-.leaflet-control-fullscreen-button {
-  position: absolute;
-}
-
-.leaflet-bottom .leaflet-control {
-  margin-bottom: 0rem;
-}
-
-
 .cluster-icon {
   height: 2rem;
   width: 2rem;
@@ -96,6 +23,129 @@
 }
 
 
+/* *** Map Container *** */
+
+.leaflet-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.99;
+  border: none;
+  background: var(--main-bg-color);
+}
+.leaflet-control-fullscreen {
+  position: relative;
+}
+
+
+/* *** Control Elements *** */
+
+.leaflet-touch .leaflet-control-fullscreen a {
+  background-image: url("../../assets/markers/black-square-button_1f532.png");
+  position: absolute;
+  background-size: 85%;
+  background-position: 50%;
+  top: 6.5rem;
+}
+.leaflet-touch.leaflet-fullscreen-on .leaflet-control-fullscreen a {
+  background-position: 50%;
+}
+
+.leaflet-bar a:focus {
+  background-color: rgba(238, 130, 53, 0.75);
+}
+
+.leaflet-bar a {
+  background-color: rgba(238, 130, 53, 0.6);
+  border: none;
+}
+.leaflet-bar a:hover {
+  background-color: rgba(238, 130, 53, 0.75);
+  border: none;
+}
+.leaflet-bar a:focus {
+  background-color: rgba(238, 130, 53, 0.75);
+}
+
+.leaflet-retina .leaflet-control-layers-toggle {
+  background-image: url("../../assets/markers/black-circle_26ab.png");
+  background-size: 85%;
+  background-color: rgba(238, 130, 53, 0.6);
+
+}
+.leaflet-retina .leaflet-control-layers-toggle:hover {
+  background: rgba(238, 130, 53, 0.75);
+  border: none;
+}
+.leaflet-retina .leaflet-control-layers-toggle:focus {
+  background: rgba(238, 130, 53, 0.75);
+}
+
+.leaflet-control-layers {
+  background: none;
+}
+
+.leaflet-control-fullscreen-button {
+  position: absolute;
+}
+
+.leaflet-bottom .leaflet-control {
+  margin-bottom: 0rem;
+}
+
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
   bottom: 2rem
+}
+
+
+/* *** Radio Selection *** */
+
+.leaflet-control-layers-expanded {
+  padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+  background: rgba(238, 130, 53, 0.75);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.leaflet-control-layers-base label span {
+  display: flex;
+  align-items: first baseline;
+}
+
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+}
+input[type="radio"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0rem 0.6rem 0.3rem 0rem;
+  font: inherit;
+  color: currentColor;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+  display: flex;
+  justify-content: center;
+  opacity: 0.8;
+}
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em rgba(44, 44, 44, 0.9);
+}
+input[type="radio"]:checked::before {
+  transform: scale(1);
 }
