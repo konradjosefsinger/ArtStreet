@@ -10,6 +10,8 @@ import { createPlace } from '../../services/ApiService.js';
 import icon1 from "../../assets/markers/maple-leaf_1f341.png";
 import icon2 from "../../assets/markers/heart-exclamation_2763-fe0f.png";
 import icon3 from "../../assets/markers/pizza_1f355.png";
+import icon4 from "../../assets/markers/money-mouth-face_1f911.png";
+import icon5 from "../../assets/markers/pile-of-poo_1f4a9.png";
 
   function CreatePlace({ pushNewPlace }) {
 
@@ -100,6 +102,16 @@ import icon3 from "../../assets/markers/pizza_1f355.png";
           <li className={`marker-id-3 ${selectedIcon === 3 ? "selected" : ""}`}>
             <button onClick={() => handleIconClick(3)}>
               <img src={icon3} alt="3" width="27" height="27" />
+            </button>
+          </li>
+          <li className={`marker-id-4 ${selectedIcon === 4 ? "selected" : ""}`}>
+            <button onClick={() => handleIconClick(4)}>
+              <img src={icon4} alt="3" width="27" height="27" />
+            </button>
+          </li>
+          <li className={`marker-id-5 ${selectedIcon === 5 ? "selected" : ""}`}>
+            <button onClick={() => handleIconClick(5)}>
+              <img src={icon5} alt="3" width="27" height="27" />
             </button>
           </li>
         </ul>

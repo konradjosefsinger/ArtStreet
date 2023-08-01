@@ -13,6 +13,12 @@ function PopUpWindow({ place, updateAfterDelete }) {
     updateAfterDelete(placeId);
   };
 
+  const handleScroll = (event) => {
+    event.preventDefault();
+    const container = event.currentTarget;
+    container.scrollLeft = 0;
+  };
+
   return (
     <>
       <Popup>
@@ -21,7 +27,7 @@ function PopUpWindow({ place, updateAfterDelete }) {
             <div><p>Longitude: </p><p className="location-data">{place.location.longitude}</p></div>
         </div>
         <div className="popup-container">
-          <h3 className="popup-header">{place.title}</h3>
+          <h3 className="popup-header" onScroll={handleScroll}>{place.title}</h3>
           <p className="description">{place.description}</p>
           <div className="bottom-line">
             <p className="date-format">{ formatDate(place.date) }</p>

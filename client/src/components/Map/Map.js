@@ -46,6 +46,14 @@ function Map({ places, updateAfterDelete }) {
     iconUrl: require ('../../assets/markers/pizza_1f355.png'),
     iconSize: [33, 33]
   })
+  const moneyMouthFace = new Icon ({
+    iconUrl: require ('../../assets/markers/money-mouth-face_1f911.png'),
+    iconSize: [33, 33]
+  })
+  const pileOfPoo = new Icon ({
+    iconUrl: require ('../../assets/markers/pile-of-poo_1f4a9.png'),
+    iconSize: [33, 33]
+  })
 
   const orangeMarkerIcon = new Icon ({
     iconUrl: require ('../../assets/markers/Map-Marker-Free-Download-PNG.png'),
@@ -62,6 +70,8 @@ function Map({ places, updateAfterDelete }) {
       1: mapleLeaf,
       2: heartExclamation,
       3: pizzaIcon,
+      4: moneyMouthFace,
+      5: pileOfPoo
     };
     return renderIcon[place.icon] || orangeMarkerIcon;
   };
