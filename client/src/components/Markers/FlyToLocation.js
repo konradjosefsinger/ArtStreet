@@ -1,33 +1,35 @@
-// function LocationMarker() {
-//   const [position, setPosition] = useState(null)
-//   const map = useMapEvents({
-//     click() {
-//       map.locate()
-//     },
-//     locationfound(e) {
-//       setPosition(e.latlng)
-//       map.flyTo(e.latlng, map.getZoom())
-//     },
-//   })
+// import React, { useState } from 'react';
+// import { Marker, Popup, useMap } from 'react-leaflet';
 
-//   return position === null ? null : (
-//     <Marker position={position}>
-//       <Popup>You are here</Popup>
-//     </Marker>
-//   )
+// function FlyToLocation({ location }) {
+
+//   const [position, setPosition] = useState(null);
+//   const map = useMap();
+
+//   const handleFlyToLocation = () => {
+//     if (location.latitude && location.longitude) {
+//       const latLng = [location.latitude, location.longitude];
+//       setPosition(latLng);
+//       map.flyTo(latLng, map.getZoom());
+//     }
+//   };
+  
+//   React.useEffect(() => {
+//     if (location.latitude && location.longitude) {
+//       setPosition([location.latitude, location.longitude]);
+//     }
+//   }, [location.latitude, location.longitude]);
+
+//   return (
+//     <>
+//       {position && (
+//         <Marker position={position}>
+//           <Popup>You are here</Popup>
+//         </Marker>
+//       )}
+//       <button onClick={handleFlyToLocation}>Fly to Geolocation</button>
+//     </>
+//   );
 // }
 
-// export default LocationMarker;
-
-// render(
-//   <MapContainer
-//     center={{ lat: 51.505, lng: -0.09 }}
-//     zoom={13}
-//     scrollWheelZoom={false}>
-//     <TileLayer
-//       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//     />
-//     <LocationMarker />
-//   </MapContainer>,
-// )
+// export default FlyToLocation;

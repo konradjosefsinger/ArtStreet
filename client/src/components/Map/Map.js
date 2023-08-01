@@ -5,12 +5,14 @@ import 'leaflet-fullscreen/dist/Leaflet.fullscreen.js';
 import 'leaflet-fullscreen/dist/leaflet.fullscreen.css';
 import 'leaflet/dist/leaflet.css';
 import './map.css'
-import { useRef,useState, useEffect } from 'react';
+import { useRef,useState , useEffect } from 'react';
 import useGeoLocation from '../../services/GeoLocation';
 
 import { PopUpWindow, PopUpLocation } from '../PopUp/PopUpWindow';
+import FlyToLocation from '../Markers/FlyToLocation';
 
 const { BaseLayer } = LayersControl;
+
 
 // https://leaflet-extras.github.io/leaflet-providers/preview/
 
@@ -182,6 +184,7 @@ function Map({ places, updateAfterDelete }) {
 
 
           </MarkerClusterGroup>
+          <FlyToLocation />
         </MapContainer>
       )}
     </div>
