@@ -10,19 +10,18 @@
   background: var(--main-bg-color);
 }
 .leaflet-control-fullscreen {
+  position: relative;
   top: 4.5rem;
 }
 .leaflet-touch .leaflet-control-fullscreen a {
   background-image: url("../../assets/markers/black-square-button_1f532.png");
-  position: relative;
+  position: absolute;
   background-size: 85%;
   background-position: 50%;
 }
+
 .leaflet-touch.leaflet-fullscreen-on .leaflet-control-fullscreen a {
-  background-position: none;
-}
-.leaflet-touch.leaflet-fullscreen-on .leaflet-control-fullscreen a {
-  background-position: none;
+  background-position: 50%;
 }
 
 .leaflet-bar a:focus {
@@ -40,6 +39,9 @@
 .leaflet-bar a:focus {
   background-color: rgba(238, 130, 53, 0.8);
 }
+.leaflet-bar {
+  background-color: none;
+}
 
 .leaflet-retina .leaflet-control-layers-toggle {
   background-image: url("../../assets/markers/black-circle_26ab.png");
@@ -55,11 +57,6 @@
   background: rgba(238, 130, 53, 0.8);
 }
 
-
-.leaflet-control-layers-expanded {
-  background: rgba(238, 130, 53, 0.8);
-  color: white;
-}
 
 
 .leaflet-control-fullscreen-button {
@@ -98,4 +95,65 @@
 
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
   bottom: 2rem
+}
+
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  border: none;
+}
+
+.leaflet-control-layers {
+  background-color: none;
+}
+.leaflet-control-layers-expanded {
+  background: rgba(238, 130, 53, 0.8);
+  color: white;
+  border-radius: 1px;
+}
+.leaflet-control-layers-expanded {
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem 0.6rem 0.4rem 0.6rem;
+}
+.leaflet-control-layers-expanded input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  appearance: none;
+  background-color: #fff;
+  margin: 0.3rem 0.6rem 0rem 0rem;
+  font: inherit;
+  color: currentColor;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.leaflet-control-layers-expanded input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em rgba(44, 44, 44, 0.8);
+}
+
+.leaflet-control-layers-expanded input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+.leaflet-control-layers-base label span {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
