@@ -9,7 +9,7 @@ import { useRef,useState , useEffect } from 'react';
 import useGeoLocation from '../../services/GeoLocation';
 
 import { PopUpWindow, PopUpLocation } from '../PopUp/PopUpWindow';
-import FlyToLocation from '../Markers/FlyToLocation';
+// import FlyToLocation from '../Markers/FlyToLocation';
 
 const { BaseLayer } = LayersControl;
 
@@ -21,8 +21,6 @@ function Map({ places, updateAfterDelete }) {
   const Spinner = () => <div className="spinner">Loading...</div>;
   
   let location = useGeoLocation();
-
-
 
   // const [position, setPosition] = useState([]);
 
@@ -102,6 +100,7 @@ function Map({ places, updateAfterDelete }) {
     }
   }
 
+
   return (
     <div className='map-component'>
 
@@ -173,18 +172,11 @@ function Map({ places, updateAfterDelete }) {
                 position={[location.latitude, location.longitude]}
                 icon={hatchingChickIcon}
                 draggable={true}
-                // eventHandlers={{
-                //   dragend: handleMarkerDrag,
-                // }}
-              >
-                {/* <Popup>
-                  <PopUpLocation location={ [position.latitude, position.longitude] } />
-                </Popup> */}
-              </Marker>
-
+              />
 
           </MarkerClusterGroup>
-          <FlyToLocation />
+          {/* <FlyToLocation /> */}
+
         </MapContainer>
       )}
     </div>

@@ -132,6 +132,9 @@
   font-weight: 200;
   height: 6.5rem;
   width: 18rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .description::-webkit-scrollbar{
   display: none;

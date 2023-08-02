@@ -159,3 +159,13 @@
   flex-direction: row;
   align-items: baseline;
 }
+
+.leaflet-bar a.leaflet-disabled {
+  background-color: none;
+}
+.leaflet-control-layers {
+  background: rgba(238, 130, 53, 0.6);
+}
+.leaflet-bar a.leaflet-disabled {
+  background-color: rgba(238, 130, 53, 0.6);
+}
