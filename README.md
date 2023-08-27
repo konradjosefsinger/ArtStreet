@@ -11,9 +11,11 @@ To get started with ArtStreet, follow these instructions:
 
 1. Fork this repo and clone it in to your local environment.
 
-2. Navigate to the project folder.
+2. Navigate to the project folder and run.
 
-Run `npm install`.
+```
+npm install
+```
 
 3. Create a new file named .env in the root directory and populate it with your mongodb database connection string. 
 ```
