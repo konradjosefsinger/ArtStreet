@@ -36,7 +36,11 @@ npm start
 
 Mongo, React, Express, Node, Leaflet API
 
+### To Do
+
+- User authentication and authorization
+
 ### Features to consider
 
 - Multi-Media Attachments: Allow users to attach photos, audio recordings, etc.
-- Social Integration: Allow users to share their pinned locations on social media.
+- Social Integration: Allow users to share their pinned locations on social media
