@@ -34,4 +34,9 @@ npm start
 
 ### Technologies
 
-Mongo, React, Express, Node
+Mongo, React, Express, Node, Leaflet API
+
+### Features to consider
+
+- Multi-Media Attachments: Allow users to attach photos, audio recordings, etc.
+- Social Integration: Allow users to share their pinned locations on social media.
