@@ -9,4 +9,4 @@ app.use(express.json());
 
 app.use(router);
 
-export { app };
+module.exports = { app };
