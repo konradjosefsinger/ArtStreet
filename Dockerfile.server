@@ -1,0 +1,16 @@
+ARG NODE_VERSION=20.3.0
+
+FROM node:${NODE_VERSION}-alpine
+
+WORKDIR /usr/src/app
+
+COPY server/package.json ./server/
+
+RUN npm install --silent --prefix ./server
+
+COPY server ./server
+COPY database ./database
+
+EXPOSE 5050
+
+CMD ["npm","start"]
